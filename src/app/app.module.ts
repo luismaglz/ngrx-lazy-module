@@ -1,20 +1,18 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-
-import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
-import { ActionReducer, StoreModule } from '@ngrx/store/src';
-import { store1module } from '../store/store1/store1.module';
-import { store2module } from '../store/store2/store2.module';
-import { localStorageSync } from 'ngrx-store-localstorage';
-import { AppRoutingModule } from './routing.module';
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { BrowserModule } from "@angular/platform-browser";
+import { ActionReducer, StoreModule } from "@ngrx/store";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { localStorageSync } from "ngrx-store-localstorage";
+import { store2module } from "../store/store2/store2.module";
+import { AppComponent } from "./app.component";
+import { AppRoutingModule } from "./routing.module";
 
 export function sessionStorageSyncReducer(
   reducer: ActionReducer<any>
 ): ActionReducer<any> {
   return localStorageSync({
-    keys: ['store1', 'store2'],
+    keys: ["store1", "store2"],
     storage: sessionStorage,
     rehydrate: true,
     restoreDates: false,
@@ -34,7 +32,7 @@ const metaReducers = [sessionStorageSyncReducer];
         metaReducers,
       }
     ),
-    store1module,
+    StoreDevtoolsModule.instrument({ maxAge: 40, name: "Demo App" }),
     store2module,
   ],
   declarations: [AppComponent],
