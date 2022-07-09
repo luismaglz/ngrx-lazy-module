@@ -6,14 +6,19 @@ import { hellomodule } from './hello.module';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'store1',
+    loadChildren: () =>
+      import('../route1/route1.module').then((m) => m.route1module),
+  },
+  {
+    path: 'store2',
     loadChildren: () =>
       import('../route2/route2.module').then((m) => m.route2module),
   },
   {
-    path: 'store1',
-    loadChildren: () =>
-      import('../route1/route1.module').then((m) => m.route1module),
+    path: '*',
+    pathMatch: 'full',
+    redirectTo: 'store2',
   },
 ];
 
