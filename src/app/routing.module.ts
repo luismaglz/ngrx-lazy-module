@@ -10,15 +10,15 @@ const routes: Routes = [
     loadChildren: () =>
       import('../route2/route2.module').then((m) => m.route2module),
   },
-  // {
-  //   path: 'store1',
-  //   loadChildren: () =>
-  //     import('../route1/route1.module').then((m) => m.route1module),
-  // },
+  {
+    path: 'store1',
+    loadChildren: () =>
+      import('../route1/route1.module').then((m) => m.route1module),
+  },
   {
     path: '',
-    pathMatch: 'prefix',
-    redirectTo: '/store2',
+    pathMatch: 'full',
+    redirectTo: 'store2',
   },
 ];
 
@@ -28,7 +28,6 @@ const routes: Routes = [
       enableTracing: false,
       scrollPositionRestoration: 'top',
       // preloadingStrategy: PreloadAllModules,
-      relativeLinkResolution: 'legacy',
     }),
     hellomodule,
     route1module,
