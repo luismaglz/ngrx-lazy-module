@@ -8,18 +8,8 @@ import { selectAnything, selectAnythingSub } from '../store/store2/selector';
   templateUrl: './route2.component.html',
   styleUrls: ['./route2.component.css'],
 })
-export class Route2Component implements OnInit {
-  constructor(protected store: Store, protected router: Router) {}
-
-  ngOnInit() {
-    console.log('app-route2 on init');
-    this.store
-      .select(selectAnything)
-      .subscribe((value) => console.log('direct child', value));
-    this.store
-      .select(selectAnythingSub)
-      .subscribe((sub) => console.log('indirect child', sub));
-  }
+export class Route2Component {
+  constructor(protected router: Router) {}
 
   navigate() {
     this.router.navigate(['/store1/component']);
