@@ -16,9 +16,9 @@ const routes: Routes = [
   //     import('../route1/route1.module').then((m) => m.route1module),
   // },
   {
-    path: '*',
+    path: '',
     pathMatch: 'prefix',
-    redirectTo: 'store2',
+    redirectTo: '/store2',
   },
 ];
 
